@@ -1,16 +1,47 @@
-# React + Vite
+# Arjit Kedia — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio site built with React 19, Vite, and Tailwind CSS v4.
 
-Currently, two official plugins are available:
+**Live:** [arjitkedia.dev](https://arjitkedia.dev)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- **React 19** + **Vite 8** — fast dev server and build
+- **Tailwind CSS v4** (via `@tailwindcss/vite`) — utility-first styling
+- **EmailJS** — contact form without a backend
+- **Umami** — privacy-friendly analytics
+- **Oxlint** — fast linter
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Sections
 
-## Expanding the Oxlint configuration
+Hero · Experience · Projects · Education · Skills · Contact
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Getting started
+
+```bash
+npm install
+cp .env.example .env   # fill in your keys
+npm run dev
+```
+
+## Environment variables
+
+| Variable | Description |
+|---|---|
+| `VITE_EMAILJS_SERVICE_ID` | EmailJS service ID |
+| `VITE_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
+| `VITE_EMAILJS_PUBLIC_KEY` | EmailJS public key |
+| `VITE_CONTACT_EMAIL` | Fallback email shown on form error |
+| `VITE_GITHUB_URL` | GitHub profile URL |
+| `VITE_LINKEDIN_URL` | LinkedIn profile URL |
+| `VITE_RESUME_URL` | Direct link to resume PDF |
+| `VITE_UMAMI_WEBSITE_ID` | Umami analytics website ID |
+
+## Commands
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run oxlint |
