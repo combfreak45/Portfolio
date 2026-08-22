@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import TimelineLine from '../shared/TimelineLine';
 import ProjectTags from './ProjectTags';
-import CaseStudy from '../shared/CaseStudy';
 
 const linkIconClass = "text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200 transition-colors";
 
@@ -18,6 +18,20 @@ export default function ProjectItem({ id, item }) {
               <span className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                 {item.title}
               </span>
+              {item.slug && (
+                <Link
+                  id={`${id}-detail`}
+                  to={`/projects/${item.slug}`}
+                  aria-label={`${item.title} detail page`}
+                  className={linkIconClass}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </Link>
+              )}
               {item.link && (
                 <a
                   id={`${id}-link`}
@@ -53,11 +67,21 @@ export default function ProjectItem({ id, item }) {
               {item.date}
             </span>
           </div>
-          <p id={`${id}-desc`} className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
-            {item.description}
-          </p>
+          {Array.isArray(item.description) ? (
+            <ul id={`${id}-desc`} className="mt-1 space-y-0.5 list-none">
+              {item.description.map((point, i) => (
+                <li key={i} className="flex gap-2 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-500" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p id={`${id}-desc`} className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+              {item.description}
+            </p>
+          )}
           <ProjectTags id={`${id}-tags`} tags={item.tags} />
-          {item.caseStudy && <CaseStudy id={`${id}-case-study`} data={item.caseStudy} />}
         </div>
       </div>
     </div>

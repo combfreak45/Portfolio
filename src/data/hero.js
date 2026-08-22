@@ -1,7 +1,7 @@
 export const heroData = {
   name: 'Arjit Kedia',
   title: 'Software Engineer',
-  bio: 'Software engineer at SAP Labs building scalable backend services and developer tooling. I care about clean architecture, fast systems, and products that feel good to use.',
+  bio: 'Software engineer at SAP Labs building fullstack applications. I care about clean architecture, fast systems, and products that feel good to use.',
   available: true,
   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
   links: [

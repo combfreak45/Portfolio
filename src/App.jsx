@@ -1,3 +1,4 @@
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import useTheme from './hooks/useTheme';
 import Navbar from './components/layout/Navbar';
 import Hero from './components/sections/Hero';
@@ -6,14 +7,13 @@ import Projects from './components/sections/Projects';
 import Education from './components/sections/Education';
 import Contact from './components/sections/Contact';
 import FunFactButton from './components/shared/FunFactButton';
+import ProjectPage from './pages/ProjectPage';
 import { heroData } from './data/hero';
 import { experienceData } from './data/experience';
 import { projectsData } from './data/projects';
 import { educationData } from './data/education';
 
-export default function App() {
-  const { theme, toggleTheme } = useTheme();
-
+function Portfolio({ theme, toggleTheme }) {
   return (
     <div id="app" className="min-h-screen bg-white dark:bg-neutral-950 text-slate-900 dark:text-slate-100 font-sans">
       <Navbar id="navbar" theme={theme} onToggle={toggleTheme} resumeUrl={heroData.resumeUrl} name={heroData.name} />
@@ -38,5 +38,18 @@ export default function App() {
       </main>
       <FunFactButton id="fun-fact" />
     </div>
+  );
+}
+
+export default function App() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Portfolio theme={theme} toggleTheme={toggleTheme} />} />
+        <Route path="/projects/:slug" element={<ProjectPage />} />
+      </Routes>
+    </HashRouter>
   );
 }
